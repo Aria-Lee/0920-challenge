@@ -1,9 +1,11 @@
-package com.example.aria.a0920
+package com.example.aria.a0920.Activity
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import com.example.aria.a0920.Data.OkHttp
+import com.example.aria.a0920.Data.Preference
+import com.example.aria.a0920.R
 import kotlinx.android.synthetic.main.login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -12,7 +14,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
 
-        OkHttp().get(this)
+        val pref = Preference(this)
+        val token = pref.getData()
+        if(token != null) OkHttp().logined(token, this)
 
         signup.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
@@ -27,16 +31,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun login(string:String){
-        val intent = Intent(this, ShowActivity::class.java)
-        intent.putExtra("DataString", string)
-        Log.wtf("aaaaa", string)
-        startActivity(intent)
-    }
-
-    fun logined(string: String){
-        val intent = Intent(this, ShowActivity::class.java)
-        intent.putExtra("DataString", string)
-        Log.wtf("aaaaa", string)
-        startActivity(intent)}
+//    fun login(string:String){
+//        val intent = Intent(this, ShowActivity::class.java)
+//        intent.putExtra("DataString", string)
+//        Log.wtf("aaaaa", string)
+//        startActivity(intent)
+//    }
 }

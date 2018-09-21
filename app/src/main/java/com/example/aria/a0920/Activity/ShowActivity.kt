@@ -1,4 +1,4 @@
-package com.example.aria.a0920
+package com.example.aria.a0920.Activity
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -10,26 +10,28 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.show.*
-import android.view.KeyEvent.KEYCODE_BACK
-
+import com.example.aria.a0920.Data.Data
+import com.example.aria.a0920.Data.OkHttp
+import com.example.aria.a0920.Data.Preference
+import com.example.aria.a0920.R
 
 
 class ShowActivity : AppCompatActivity() {
-    var dataString: String =""
+    lateinit var dataString: String
+    lateinit var  data : Data
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.show)
         dataString = intent.getStringExtra("DataString")
+        data = Gson().fromJson(dataString, Data::class.java)
 
         edit.setOnClickListener {  }
         delete.setOnClickListener {  }
-//        getData()
+        saveToken()
         showData()
     }
 
-
-//    val dataString = intent.getStringExtra("DataString")
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
@@ -50,9 +52,11 @@ class ShowActivity : AppCompatActivity() {
                 .setTitle("提醒")
                 .setMessage("確定要登出嗎?")
                 .setPositiveButton("確定"){dialog, which ->
+                    val pref = Preference(this)
+                    OkHttp().logout(data.api_token, this)
+                    pref.deleteData()
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
-
                 }
                 .setNegativeButton("取消"){dialog, which ->
                     dialog.cancel()
@@ -62,10 +66,9 @@ class ShowActivity : AppCompatActivity() {
     }
 
     fun showData(){
-        val Data = Gson().fromJson(dataString, Data::class.java)
-        username.setText(Data.username)
-        email.setText(Data.email)
-        phone.setText(Data.phone)
+        username.setText(data.username)
+        email.setText(data.email)
+        phone.setText(data.phone)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
@@ -78,15 +81,15 @@ class ShowActivity : AppCompatActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
-//    fun getData(){
-//        OkHttp().get(this)
-//    }
-
-
     fun edit(){
     val editIntent = Intent(this, EditActivity::class.java)
     editIntent.putExtra("DataString", dataString)
     startActivity(editIntent)
 }
+
+    fun saveToken(){
+        val pref = Preference(this)
+        pref.setData(data.api_token)
+    }
 
 }

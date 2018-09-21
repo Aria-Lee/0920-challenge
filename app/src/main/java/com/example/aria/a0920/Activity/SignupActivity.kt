@@ -1,10 +1,11 @@
-package com.example.aria.a0920
+package com.example.aria.a0920.Activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import com.google.gson.Gson
+import com.example.aria.a0920.Data.Data
+import com.example.aria.a0920.Data.OkHttp
+import com.example.aria.a0920.R
 import kotlinx.android.synthetic.main.signup.*
 
 class SignupActivity : AppCompatActivity() {
@@ -39,4 +40,10 @@ class SignupActivity : AppCompatActivity() {
                 .create()
                 .show()
     }
+
+//    fun success(string: String){
+//        val intent= Intent(this, ShowActivity::class.java)
+//        intent.putExtra("DataString", string)
+//        startActivity(intent)
+//    }
 }

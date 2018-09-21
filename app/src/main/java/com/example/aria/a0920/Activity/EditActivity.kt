@@ -1,7 +1,9 @@
-package com.example.aria.a0920
+package com.example.aria.a0920.Activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.aria.a0920.Data.Data
+import com.example.aria.a0920.R
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.edit.*
 

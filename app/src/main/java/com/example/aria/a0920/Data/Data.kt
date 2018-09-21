@@ -1,4 +1,4 @@
-package com.example.aria.a0920
+package com.example.aria.a0920.Data
 
 import android.accounts.Account
 
@@ -8,6 +8,7 @@ class Data {
     var password : String =""
     var email : String =""
     var phone : String =""
+    var api_token : String =""
 constructor(username: String, account: String, password:String, email:String, phone:String){
     this.username=username
     this.account=account
@@ -15,7 +16,6 @@ constructor(username: String, account: String, password:String, email:String, ph
     this.email=email
     this.phone=phone
 }
-
 
 //class Data {
 //    var id: Int =0

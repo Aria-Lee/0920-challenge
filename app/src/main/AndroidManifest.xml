@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity"
+        <activity android:name=".Activity.LoginActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,10 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowActivity"
+        <activity android:name=".Activity.ShowActivity"
             />
-        <activity android:name=".EditActivity"/>
-        <activity android:name=".SignupActivity"/>
+        <activity android:name=".Activity.EditActivity"/>
+        <activity android:name=".Activity.SignupActivity"/>
     </application>
 
 </manifest>
