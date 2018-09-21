@@ -23,18 +23,20 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        login.setOnClickListener {
-            var account = account.text.toString()
-            val password = password.text.toString()
-           OkHttp().login(account,password,this)
+//        login.setOnClickListener {
+//            var account = account.text.toString()
+//            val password = password.text.toString()
+//           OkHttp().login(account,password,this)
+//
+//        }
 
+        login.setOnClickListener {
+            login()
         }
     }
 
-//    fun login(string:String){
-//        val intent = Intent(this, ShowActivity::class.java)
-//        intent.putExtra("DataString", string)
-//        Log.wtf("aaaaa", string)
-//        startActivity(intent)
-//    }
+    fun login(){
+        val intent = Intent(this, ShowActivity::class.java)
+        startActivity(intent)
+    }
 }

@@ -23,13 +23,13 @@ class ShowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.show)
-        dataString = intent.getStringExtra("DataString")
-        data = Gson().fromJson(dataString, Data::class.java)
+//        dataString = intent.getStringExtra("DataString")
+//        data = Gson().fromJson(dataString, Data::class.java)
 
         edit.setOnClickListener {  }
         delete.setOnClickListener {  }
-        saveToken()
-        showData()
+//        saveToken()
+//        showData()
     }
 
 
@@ -52,9 +52,9 @@ class ShowActivity : AppCompatActivity() {
                 .setTitle("提醒")
                 .setMessage("確定要登出嗎?")
                 .setPositiveButton("確定"){dialog, which ->
-                    val pref = Preference(this)
-                    OkHttp().logout(data.api_token, this)
-                    pref.deleteData()
+//                    val pref = Preference(this)
+//                    OkHttp().logout(data.api_token, this)
+//                    pref.deleteData()
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                 }
