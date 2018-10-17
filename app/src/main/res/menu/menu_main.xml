@@ -5,8 +5,25 @@
     >
 
     <item
+        android:id="@+id/edit_value"
+        android:icon="@drawable/ic_edit_black_24dp"
+        android:title="Edit Information"
+        android:visible="true"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/edit_password"
+        android:icon="@drawable/ic_edit_black_24dp"
+        android:title="Change Password"
+        android:visible="true" />
+    <item
         android:id="@+id/menu_logout"
+        android:icon="@drawable/ic_call_missed_outgoing_black_24dp"
         android:title="Log out"
-        app:showAsAction="always" />
+        android:visible="true" />
+
+    <item
+        android:id="@+id/delete_acouunt"
+        android:icon="@drawable/ic_clear_black_24dp"
+        android:title="Delete Account" />
 
 </menu>
